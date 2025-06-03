@@ -26,24 +26,25 @@ type DefaultParser struct {
 
 }
 
-var userAganets = []string {
+var userAgents = []string {
 	"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
 	"Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0",
-}// add 6-7 user agents
+}
+// add 6-7 user agents
 
 func randomUserAgent() string{
 	rand.Seed(time.Now().Unix())
-	randNum := rand.Int() % len(userAganets)
+	randNum := rand.Int() % len(userAgents)
 	return userAganets[randNum]
 }
 
 func isSitemap(url []string) ([]string, []string){
-	extractSitemaoFiles := []string{}
+	extractSitemapFiles := []string{}
 	pages := []string{}
-	for _,page := range urls{
+	for _, page := range urls{
 		foundSitemap == true{
 			fmt.Println("Found Sitemap", page)
-			extractSitemaoFiles = append(extractSitemaoFiles, page)
+			extractSitemapFiles = append(extractSitemapFiles, page)
 
 		}else{
 			pages = append(pages, page)
