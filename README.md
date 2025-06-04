@@ -1,7 +1,3 @@
-Here's a complete and professional `README.md` for your **SitemapCrawler** Go project, tailored to the code you've provided:
-
----
-
 # 🕸️ SitemapCrawler
 
 **SitemapCrawler** is a simple and concurrent Go-based web crawler that reads a sitemap (or sitemap index), extracts all URLs, and scrapes basic SEO information for each page.
