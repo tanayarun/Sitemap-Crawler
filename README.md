@@ -1,67 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>SitemapCrawler</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2em; }
-    code, pre { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
-    pre { padding: 1em; }
-    h1, h2, h3 { color: #2c3e50; }
-    ul { margin-bottom: 1em; }
-  </style>
-</head>
-<body>
-  <h1>SitemapCrawler</h1>
-  <p>
-    <strong>SitemapCrawler</strong> is a simple Go program to crawl a website’s sitemap, extract all URLs, and collect basic SEO data (title, H1, meta description, status code) for each page.
-  </p>
+Here's a complete and professional `README.md` for your **SitemapCrawler** Go project, tailored to the code you've provided:
 
-  <h2>Features</h2>
-  <ul>
-    <li>Fetches and parses XML sitemaps</li>
-    <li>Recursively follows sitemap index files</li>
-    <li>Scrapes SEO data from each page</li>
-    <li>Supports concurrent crawling with configurable concurrency</li>
-    <li>Randomizes User-Agent for each request</li>
-  </ul>
+---
 
-  <h2>Requirements</h2>
-  <ul>
-    <li>Go 1.18 or newer</li>
-    <li><a href="https://github.com/PuerkitoBio/goquery">github.com/PuerkitoBio/goquery</a></li>
-  </ul>
-  <pre>
+# 🕸️ SitemapCrawler
+
+**SitemapCrawler** is a simple and concurrent Go-based web crawler that reads a sitemap (or sitemap index), extracts all URLs, and scrapes basic SEO information for each page.
+
+It fetches:
+
+* Page title
+* First `<h1>` tag
+* Meta description
+* HTTP status code
+
+---
+
+##  Features
+
+*  Parses XML sitemaps and sitemap indexes
+*  Collects SEO metadata from each URL
+*  Randomized User-Agent for each request (to avoid detection)
+*  Concurrent crawling with configurable concurrency
+*  Clean separation of logic using `Parser` interface
+
+---
+
+##  Tech Stack
+
+* Language: **Go 1.18+**
+* HTML parsing: [`goquery`](https://github.com/PuerkitoBio/goquery)
+
+---
+
+##  Installation
+
+1. Install Go 1.18 or newer.
+2. Install dependency:
+
+```bash
 go get github.com/PuerkitoBio/goquery
-  </pre>
+```
 
-  <h2>Usage</h2>
-  <ol>
-    <li>Clone this repository.</li>
-    <li>Build and run:</li>
-  </ol>
-  <pre>
+3. Clone and run:
+
+```bash
+git clone https://github.com/yourusername/SitemapCrawler.git
+cd SitemapCrawler
 go run main.go
-  </pre>
-  <p>
-    By default, it scrapes the sitemap at <code>https://www.quicksprout.com/sitemap.xml</code> with a concurrency of 10.
-  </p>
+```
 
-  <h2>Example Output</h2>
-  <pre>
-{URL:https://www.quicksprout.com/ Title:... H1:... MetaDescription:... StatusCode:200}
-...
-  </pre>
+---
 
-  <h2>Customization</h2>
-  <p>
-    To crawl a different sitemap, edit the URL in the <code>main()</code> function:
-  </p>
-  <pre>
+##  Usage
+
+By default, it scrapes:
+
+```
+https://www.quicksprout.com/sitemap.xml
+```
+
+To change the sitemap URL, edit the following line in `main()`:
+
+```go
 results := ScrapeSitemap("https://example.com/sitemap.xml", p, 10)
-  </pre>
+```
 
-  <h2>License</h2>
-  <p>MIT License</p>
-</body>
-</html>
+Where:
+
+* `p` is a `Parser` (e.g. `DefaultParser`)
+* `10` is the concurrency level
+
+---
+
+##  Example Output
+
+```
+{URL:https://www.quicksprout.com/ Title:... H1:... MetaDescription:... StatusCode:200}
+```
+
+---
+
+##  Project Structure
+
+| File              | Description                                  |
+| ----------------- | -------------------------------------------- |
+| `main.go`         | Entry point and overall control flow         |
+| `ScrapeSitemap()` | Orchestrates sitemap extraction and scraping |
+| `DefaultParser`   | Extracts SEO metadata from HTML pages        |
+| `makeRequest()`   | Makes GET requests with random User-Agent    |
+| `extractUrls()`   | Parses `<loc>` tags from XML sitemap         |
+| `scrapeUrls()`    | Concurrently processes list of URLs          |
+
