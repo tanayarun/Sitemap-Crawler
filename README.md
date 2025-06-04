@@ -40,7 +40,7 @@ go get github.com/PuerkitoBio/goquery
 3. Clone and run:
 
 ```bash
-git clone https://github.com/yourusername/SitemapCrawler.git
+git clone https://github.com/tanayarun/Sitemap-Crawler.git
 cd SitemapCrawler
 go run main.go
 ```
@@ -65,14 +65,6 @@ Where:
 
 * `p` is a `Parser` (e.g. `DefaultParser`)
 * `10` is the concurrency level
-
----
-
-##  Example Output
-
-```
-{URL:https://www.quicksprout.com/ Title:... H1:... MetaDescription:... StatusCode:200}
-```
 
 ---
 
